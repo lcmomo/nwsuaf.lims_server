@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.nwsuaf.lims.dao.DeviceMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.nwsuaf.lims.model.Device">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="consumeno" jdbcType="VARCHAR" property="consumeno" />
+    <result column="consume_name" jdbcType="VARCHAR" property="consumeName" />
+    <result column="specs" jdbcType="VARCHAR" property="specs" />
+    <result column="producer" jdbcType="VARCHAR" property="producer" />
+    <result column="amount" jdbcType="INTEGER" property="amount" />
+    <result column="price" jdbcType="INTEGER" property="price" />
+    <result column="total_price" jdbcType="INTEGER" property="totalPrice" />
+    <result column="supplyer" jdbcType="VARCHAR" property="supplyer" />
+    <result column="category" jdbcType="VARCHAR" property="category" />
+    <result column="platname" jdbcType="VARCHAR" property="platname" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+</mapper>

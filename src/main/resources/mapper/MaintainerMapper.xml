@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.nwsuaf.lims.dao.MaintainerMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.nwsuaf.lims.model.Maintainer">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="maintainerno" jdbcType="VARCHAR" property="maintainerno" />
+    <result column="maintainer_name" jdbcType="VARCHAR" property="maintainerName" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="linkman" jdbcType="VARCHAR" property="linkman" />
+  </resultMap>
+</mapper>

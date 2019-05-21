@@ -31,7 +31,7 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
                 .andEqualTo("username",username)
                 .andEqualTo("password", password);
 
-        System.out.println("\n\n"+username);
+        //System.out.println("\n\n"+username);
         List<User> users = findByCondition(condition);
         System.out.println("\n\nu"+users);
         if (users.size() > 0) {

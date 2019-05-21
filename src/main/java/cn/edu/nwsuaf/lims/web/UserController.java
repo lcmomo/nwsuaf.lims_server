@@ -9,6 +9,7 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,26 +21,29 @@ public class UserController {
     @Resource
     private UserService userService;
 
-    @PostMapping
+    @PostMapping(value="/add")
     public Result add(@RequestBody User user) {
         userService.save(user);
         return ResultGenerator.genSuccessResult();
     }
 
-    @DeleteMapping("/{id}")
-    public Result delete(@PathVariable Integer id) {
-        userService.deleteById(id);
+    @DeleteMapping("/delete")
+    public Result delete(@RequestBody User user) {
+        userService.deleteById(user.getId());
         return ResultGenerator.genSuccessResult();
     }
 
-    @PutMapping
+    @PutMapping("/update")
     public Result update(@RequestBody User user) {
+        System.out.println(user.getEmail());
         userService.update(user);
+        //userService.findById(user.getId());
+       // User u=userService.findById(user.getId());
         return ResultGenerator.genSuccessResult();
     }
 
-    @GetMapping("/{id}")
-    public Result detail(@PathVariable Integer id) {
+    @GetMapping("/detail")
+    public Result detail(@RequestParam(defaultValue = "0") Integer id) {
         User user = userService.findById(id);
         return ResultGenerator.genSuccessResult(user);
     }
@@ -53,8 +57,18 @@ public class UserController {
     }
 
     @PostMapping(value="login")
-    public Result login(@RequestParam(name="username")String username,@RequestParam(name="password")String password){
+//    public Result login(@RequestParam(name="username")String username,@RequestParam(name="password")String password
+//                        )
+    public Result login(@RequestBody User use)
+
+    {
+       String username=use.getUsername();
+       String password=use.getPassword();
+        //System.out.println(username);
             User user=userService.login(username,password);
+            long  redate=new Date().getTime();
+            user.setRedate(redate);
+            System.out.println((user.getUsername()));
             if(user!=null){
                 return ResultGenerator.genSuccessResult(user);
             }else{

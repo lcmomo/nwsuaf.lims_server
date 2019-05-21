@@ -1,6 +1,7 @@
 package cn.edu.nwsuaf.lims.model;
 
 import javax.persistence.*;
+import java.util.Date;
 
 public class User {
     @Id
@@ -23,6 +24,9 @@ public class User {
     private String email;
 
     private String remark;
+
+    @Transient
+    private Long redate;
 
     /**
      * @return id
@@ -148,5 +152,12 @@ public class User {
      */
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public Long getRedate(){
+        return redate;
+    }
+    public void setRedate(Long date){
+        this.redate=date;
     }
 }
