@@ -21,31 +21,31 @@ public class InstrumentController {
     @Resource
     private InstrumentService instrumentService;
 
-    @PostMapping
+    @PostMapping("/add")
     public Result add(@RequestBody Instrument instrument) {
         instrumentService.save(instrument);
         return ResultGenerator.genSuccessResult();
     }
 
-    @DeleteMapping("/{id}")
-    public Result delete(@PathVariable Integer id) {
-        instrumentService.deleteById(id);
+    @DeleteMapping("/delete")
+    public Result delete(@RequestBody Instrument instrument) {
+        instrumentService.deleteById(instrument.getId());
         return ResultGenerator.genSuccessResult();
     }
 
-    @PutMapping
+    @PutMapping("/update")
     public Result update(@RequestBody Instrument instrument) {
         instrumentService.update(instrument);
         return ResultGenerator.genSuccessResult();
     }
 
-    @GetMapping("/{id}")
-    public Result detail(@PathVariable Integer id) {
+    @GetMapping("/detail")
+    public Result detail(@RequestParam(defaultValue = "0") Integer id) {
         Instrument instrument = instrumentService.findById(id);
         return ResultGenerator.genSuccessResult(instrument);
     }
 
-    @GetMapping
+    @GetMapping("/list")
     public Result list(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "0") Integer size) {
         PageHelper.startPage(page, size);
         List<Instrument> list = instrumentService.findAll();

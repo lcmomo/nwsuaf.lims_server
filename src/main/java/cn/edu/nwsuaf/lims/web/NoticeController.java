@@ -43,7 +43,7 @@ public class NoticeController {
         return ResultGenerator.genSuccessResult();
     }
 
-    @GetMapping("user/detail")
+    @GetMapping("/detail")
     public Result detail(@RequestBody Notice notic) {
         Notice notice = noticeService.findById(notic.getId());
         return ResultGenerator.genSuccessResult(notice);

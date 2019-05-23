@@ -11,5 +11,6 @@
     <result column="platname" jdbcType="VARCHAR" property="platname" />
     <result column="status" jdbcType="VARCHAR" property="status" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="useamount" jdbcType="VARCHAR" property="useamount" />
   </resultMap>
 </mapper>

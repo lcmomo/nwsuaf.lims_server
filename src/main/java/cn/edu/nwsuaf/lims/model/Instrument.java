@@ -18,6 +18,7 @@ public class Instrument {
 
     private String remark;
 
+    private String useamount;
     /**
      * @return id
      */
@@ -101,4 +102,6 @@ public class Instrument {
     public void setRemark(String remark) {
         this.remark = remark;
     }
+    public void setUseamount(String useamount){this.useamount=useamount;}
+    public  String getUseamount(){return  useamount;}
 }
