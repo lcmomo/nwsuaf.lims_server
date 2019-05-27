@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import tk.mybatis.mapper.entity.Condition;
-
+import cn.edu.nwsuaf.lims.core.AesUtil;
 /**
  * Created by liuchao Li on 2019/05/12.
  */
@@ -29,7 +29,7 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
         Condition condition = new Condition(User.class);
         condition.createCriteria()
                 .andEqualTo("username",username)
-                .andEqualTo("password", password);
+                .andEqualTo("password",  password);
 
         //System.out.println("\n\n"+username);
         List<User> users = findByCondition(condition);
