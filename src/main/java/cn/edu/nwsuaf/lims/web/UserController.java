@@ -66,13 +66,58 @@ public class UserController {
        String password=use.getPassword();
         //System.out.println(username);
             User user=userService.login(username,password);
-            long  redate=new Date().getTime();
-            user.setRedate(redate);
-            System.out.println((user.getUsername()));
+
+
             if(user!=null){
+
+                if(user.getUsername().equals("err")){
+                    return ResultGenerator.genFailResult("err");
+
+                }
+
                 return ResultGenerator.genSuccessResult(user);
             }else{
-                return ResultGenerator.genFailResult("用户名或密码错误");
+                return ResultGenerator.genFailResult("unregister");
             }
     }
+
+    @GetMapping(value="/find")
+    public Result findByusername(@RequestParam(defaultValue = "") String username)
+
+    {
+
+        User user=userService.findByUsername(username);
+
+        if(user!=null){
+
+
+            return ResultGenerator.genFailResult("用户名已被注册");
+
+        }else{
+            return ResultGenerator.genSuccessResult();
+        }
+    }
+
+    @GetMapping(value="/findByPhone")
+    public Result findByPhone(@RequestParam(defaultValue = "") String phone)
+
+    {
+
+        User user=userService.findByPhone(phone);
+
+        if(user!=null){
+
+            return ResultGenerator.genSuccessResult(user);
+
+
+        }else{
+
+            return ResultGenerator.genFailResult("unregister");
+        }
+    }
+
+
 }
+
+
+

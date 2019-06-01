@@ -28,18 +28,63 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
     public User login(String username, String password) {
         Condition condition = new Condition(User.class);
         condition.createCriteria()
-                .andEqualTo("username",username)
-                .andEqualTo("password",  password);
+                .andEqualTo("username",username);
+
 
         //System.out.println("\n\n"+username);
-        List<User> users = findByCondition(condition);
-        System.out.println("\n\nu"+users);
-        if (users.size() > 0) {
-            User user = users.get(0);
-            System.out.println("\n\nuser"+user);
-            return user;
+        List<User> usersn = findByCondition(condition);
+        //System.out.println("\n\nu"+usersn);
+        User user=null;
+        if (usersn.size() > 0) {
+            Condition condition2 = new Condition(User.class);
+            condition2.createCriteria()
+                    .andEqualTo("username",username)
+                    .andEqualTo("password",  password);
+            System.out.println(password);
+            List<User> users = findByCondition(condition2);
+            if(users.size()>0) {
+                user = users.get(0);
+                System.out.println("\n\nuser" + user.getPassword());
+                return user;
+            }else{
+                  user=new User();
+                user.setUsername("err");
+                    return  user;
+            }
 
         } else
+            return null;
+    }
+
+    @Override
+    public User findByUsername(String username) {
+        Condition condition = new Condition(User.class);
+        condition.createCriteria()
+                .andEqualTo("username",username);
+        List<User> usersn = findByCondition(condition);
+        User user=null;
+        if(usersn.size()>0){
+           user=new User();
+           return user;
+        }
+        else
+
+        return null;
+    }
+
+    @Override
+    public User findByPhone(String phone) {
+        Condition condition = new Condition(User.class);
+        condition.createCriteria()
+                .andEqualTo("phone",phone);
+        List<User> usersn = findByCondition(condition);
+
+        if(usersn.size()>0){
+
+            return usersn.get(0);
+        }
+        else
+
             return null;
     }
 }

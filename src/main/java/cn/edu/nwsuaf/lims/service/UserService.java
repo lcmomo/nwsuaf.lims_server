@@ -8,4 +8,6 @@ import cn.edu.nwsuaf.lims.core.Service;
  */
 public interface UserService extends Service<User> {
   public User login(String username,String password);
+  public User findByUsername(String username);
+  public User findByPhone(String phone);
 }

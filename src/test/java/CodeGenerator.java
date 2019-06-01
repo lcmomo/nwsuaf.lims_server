@@ -38,7 +38,7 @@ public class CodeGenerator {
 
     public static void main(String[] args) {
       List<String>  table=new ArrayList<String>();
-      table.add("appoint");
+      table.add("unread");
 
       genCode(table);
         //genCodeByCustomModelName("输入表名","输入自定义Model名称");
