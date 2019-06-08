@@ -51,4 +51,16 @@ public class UnreadController {
         PageInfo pageInfo = new PageInfo(list);
         return ResultGenerator.genSuccessResult(pageInfo);
     }
+
+    @GetMapping(value="/find")
+    public Result findByusername(@RequestParam(defaultValue = "") String username)
+
+    {
+
+       List<Unread> list=unreadService.findByusername(username);
+
+        PageInfo pageInfo = new PageInfo(list);
+        return ResultGenerator.genSuccessResult(pageInfo);
+    }
+
 }
